@@ -13,18 +13,11 @@ class BlogHandler(webapp2.RequestHandler):
         template = env.get_template('templates/blog.html')
         self.response.write(template.render())
 
-class MainHandler(webapp2.RequestHandler):
+class FamHandler(webapp2.RequestHandler):
     def get(self):
         logging.info('Program Ran1')
         # Step 3 Use the jinja Environment to get our file
-        template = env.get_template('templates/start.html')
-        self.response.write(template.render())
-
-class RunHandler(webapp2.RequestHandler):
-    def get(self):
-        logging.info('Program Ran2')
-        # Step 3 Use the jinja Environment to get our file
-        template = env.get_template('templates/run.html')
+        template = env.get_template('templates/fambam.html')
         self.response.write(template.render())
 
 class GramHandler(webapp2.RequestHandler):
@@ -35,7 +28,7 @@ class GramHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),
-    ('/run', RunHandler),
+    ('/', BlogHandler),
+    ('/run', FamHandler),
     ('/gram', GramHandler),
 ], debug = True)
